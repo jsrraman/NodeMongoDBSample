@@ -5,13 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// Mongo related initialization stuff
+// Mongo related initialization
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/nodetest');
-
-//var routes = require('./routes/index');
-//var users = require('./routes/users');
 
 var app = express();
 
@@ -32,9 +29,6 @@ app.use(function(req, res, next) {
     req.db = db;
     next();
 })
-
-//app.use('/', routes);
-//app.use('/users', users);
 
 var baseRoute = require('./routes/index');
 var userRoute = require('./routes/users');
